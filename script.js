@@ -69,8 +69,10 @@ function playRound(playerSelection, computerSelection) {
 
 function playerSelection () {
     let playerInput = '';
-    while (playerInput !== 'rock' && playerInput !== 'paper' && playerInput !== 'scissors') {
     playerInput = prompt('Rock, Paper, or Scissors?', '' );
+    playerInput = playerInput.toLowerCase();
+    while (playerInput !== 'rock' && playerInput !== 'paper' && playerInput !== 'scissors') {
+    playerInput = prompt('Invalid input. Please enter Rock, Paper, or Scissors (case-insensitive)', '' );
     playerInput = playerInput.toLowerCase();
     }
     return playerInput;
