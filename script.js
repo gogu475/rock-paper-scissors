@@ -45,15 +45,18 @@
 
 
 function playRound(playerSelection, computerSelection) {
-    // let winner = '';
+    let winner = '';
     if (playerSelection === computerSelection) {
         console.log('Draw! Nobody Wins.');
     } else if ((playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
-        console.log('You WIN! ' + playerSelection + ' beats ' + computerSelection);
+        console.log(playerSelection + ' beats ' + computerSelection + '. Player wins round.');
+        winner = 'player'
     }
     else {
-        console.log('You LOSE! ' + computerSelection + ' beats ' + playerSelection);
+        console.log(computerSelection + ' beats ' + playerSelection + '. Computer wins round.');
+        winner = 'computer'
     }
+    return winner;
 }
 
 
@@ -104,4 +107,48 @@ function computerSelection () {
 // playRound (playerSelection, computerSelection);
 // did not call the selection functions
 
-playRound (playerSelection(), computerSelection());
+// playRound (playerSelection(), computerSelection());
+
+// here I have been instructed to create a new function called game
+
+// this will envelop the previous playRound function call
+// (i will need to add a line to the playRound function which declares a winner)
+
+
+// the game function will 
+// declare a variable for the player's score, and set it to 0
+// declare a variable for the computer's score, and set it to 0
+// call the playRound function five times
+// after every round
+// increase the winner's score by 1
+// after five rounds
+// check who has the highest score and declare them the winner
+// or if the score is even, declare a draw
+
+function playGame () {
+    let latestWinner
+    let playerScore = 0;
+    let computerScore = 0;
+    for (i=0; i<5; i++) {
+        latestWinner = playRound (playerSelection(), computerSelection());
+        // console.log (`latest winner is ${latestWinner}`);
+        if (latestWinner === 'player') {
+            playerScore += 1;
+        }
+        else if (latestWinner === 'computer') {
+            computerScore +=1;
+        }
+    }
+    if (playerScore > computerScore) {
+        console.log(`Player ${playerScore} : ${computerScore} Computer. Player wins!`);
+    } else if (playerScore < computerScore) {
+        console.log(`Player ${playerScore} : ${computerScore} Computer. Computer wins!`);
+    } else if (computerScore === playerScore) {
+        console.log(`Player ${playerScore} : ${computerScore} Computer. Draw!`);
+    } else {
+        console.log(`Error!`);
+    }
+}
+
+playGame();
+
