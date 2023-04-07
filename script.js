@@ -42,11 +42,11 @@
 // otherwise 
 // call computer the winner
 // announce that computerSelection beats playerSelection, and that the computer is the winner
-let playerInput = '';
+
 
 function playRound(playerSelection, computerSelection) {
     // let winner = '';
-    if (playerSelection == computerSelection) {
+    if (playerSelection === computerSelection) {
         console.log('Draw! Nobody Wins.');
     } else if ((playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
         console.log('You WIN! ' + playerSelection + ' beats ' + computerSelection);
@@ -68,6 +68,7 @@ function playRound(playerSelection, computerSelection) {
 // if not prompt user for playerInput again
 
 function playerSelection () {
+    let playerInput = '';
     while (playerInput !== 'rock' && playerInput !== 'paper' && playerInput !== 'scissors') {
     playerInput = prompt('Rock, Paper, or Scissors?', '' );
     playerInput = playerInput.toLowerCase();
@@ -96,5 +97,9 @@ function computerSelection () {
         return 'paper';
     }
 }
+// function call to play a round
+// note that 
+// playRound (playerSelection, computerSelection);
+// did not call the selection functions
 
-playRound()
+playRound (playerSelection(), computerSelection());
